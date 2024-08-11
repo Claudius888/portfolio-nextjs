@@ -7,7 +7,7 @@
 export const UI = () => {
   // const [currentPage, setCurrentPage] = useAtom(currentPageAtom);
   return (
-    <div className="fixed inset-0 pointer-events-none z-30">
+    <div className="absolute inset-0 pointer-events-none z-30">
       <section
         className={`flex w-full h-full flex-col items-center justify-center 
       duration-500

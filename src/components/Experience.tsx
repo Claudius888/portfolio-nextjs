@@ -8,7 +8,7 @@ import {
   Text,
   useFont,
 } from '@react-three/drei';
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Color } from 'three';
 // import { currentPageAtom } from './UI';
 import { Laptop } from './Laptop';
@@ -20,7 +20,7 @@ import { degToRad, lerp } from 'three/src/math/MathUtils.js';
 const bloomColor = new Color('#fff');
 bloomColor.multiplyScalar(1.5);
 
-export const Experience = () => {
+export const Experience = React.memo(function HeroPage() {
   const controls = useRef();
   const meshFitCameraHome = useRef();
   const textMaterial = useRef();
@@ -39,7 +39,7 @@ export const Experience = () => {
   const props = useSpring({ open: Number(open) });
 
   const intro = async () => {
-    controls.current.dolly(-23);
+    controls.current.dolly(-22);
     controls.current.smoothTime = 1.6;
     controls.current.fitToBox(meshFitCameraHome.current, true);
     // "J:\kent\educative\educative-viewer"
@@ -107,7 +107,6 @@ export const Experience = () => {
         </meshBasicMaterial>
       </Text>
       <group rotation-y={degToRad(-20)} position-x={3}>
-        {/* <Camping scale={0.6} html /> */}
         {/* <three.pointLight
           position={[10, 10, 10]}
           intensity={1.5}
@@ -144,7 +143,7 @@ export const Experience = () => {
       <Environment preset='sunset' />
     </>
   );
-};
+});
 
 useFont.preload('fonts/Poppins-Black.ttf');
 
