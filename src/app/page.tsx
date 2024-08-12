@@ -50,11 +50,7 @@ export default function Home() {
   }, []);
 
   const device = useDeviceDetection();
-  const isSmallMobile = device === SMALL_MOBILE
-
-  // useEffect(() => {
-  //   console.log(device);
-  // }, [device]);
+  const isSmallMobile = device === SMALL_MOBILE;
 
   const height = useTransform(scrollYProgress, [0, 0.9], [50, 0]);
 
@@ -77,20 +73,28 @@ export default function Home() {
             }
           >
             <ExperienceCards />
-          <div className='min-h-[calc(100vh-50vh)] pointer-events-none min-w-[calc(100vw-50vw)] max-w-[780px] max-h-[780px] w-full h-full md:min-h-[780px] md:min-w-[780px] rounded-full absolute bottom-0 bg-gradient-2 blur-2xl md:blur-[150px] opacity-10 -translate-y-1-[5%] -translate-x-1/2 left-1/2'></div>
+            <div className='min-h-[calc(100vh-50vh)] pointer-events-none min-w-[calc(100vw-50vw)] max-w-[780px] max-h-[780px] w-full h-full md:min-h-[780px] md:min-w-[780px] rounded-full absolute bottom-0 bg-gradient-2 blur-2xl md:blur-[150px] opacity-10 -translate-y-1-[5%] -translate-x-1/2 left-1/2'></div>
           </ContainerScroll>
           <div className='min-h-[calc(100vh-50vh)] pointer-events-none min-w-[calc(100vw-50vw)] max-w-[780px] max-h-[780px] w-full h-full md:min-h-[780px] md:min-w-[780px] rounded-full absolute bottom-0 bg-gradient-2 blur-3xl md:blur-[150px] opacity-35 -translate-y-1-[5%] -translate-x-1/2 left-1/2'></div>
         </div>
         <div className='absolute pointer-events-none inset-1 opacity-50 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]'></div>
         <Aboutme progress={scrollYProgress} />
 
-        <div className={cn('flex flex-col w-screen h-screen z-10 md:bg-dark mt-28  overflow-hidden',
-        isSmallMobile && 'pb-10'
-        )}>
+        <div
+          className={cn(
+            'flex flex-col w-screen h-screen z-10 md:bg-dark mt-28  overflow-hidden',
+            isSmallMobile && 'pb-10'
+          )}
+        >
           <Skills />
-          { !isSmallMobile && <motion.div style={{ height }} className='bg-red-300 relative mt-80'>
-            <div className='h-[1550%] w-[120%] -left-[10%] rounded-b-[50%] bg-dark z-[2] absolute shadow-[0px 60px 50px rgba(0, 0, 0, 0.748)]'></div>
-          </motion.div>}
+          {!isSmallMobile && (
+            <motion.div
+              style={{ height }}
+              className='bg-red-300 relative mt-80'
+            >
+              <div className='h-[1550%] w-[120%] -left-[10%] rounded-b-[50%] bg-dark z-[2] absolute shadow-[0px 60px 50px rgba(0, 0, 0, 0.748)]'></div>
+            </motion.div>
+          )}
         </div>
       </div>
 

@@ -65,7 +65,6 @@ function ExperienceCard({
   const isSmallDevice = SMALL_MOBILE == device
 
   useEffect(() => {
-    console.log('triggered', isOpen);
     animate(
       '.inner-card',
       {
@@ -77,20 +76,6 @@ function ExperienceCard({
         duration: 0.5,
       }
     );
-
-    // animate(
-    //   'ul',
-    //   {
-    //     clipPath: isOpen
-    //       ? 'inset(0% 0% 0% 0% round 10px)'
-    //       : 'inset(10% 50% 90% 50% round 10px)',
-    //   },
-    //   {
-    //     type: 'spring',
-    //     bounce: 0,
-    //     duration: 0.5,
-    //   }
-    // );
     animate(
       'hr',
       isOpen
@@ -112,7 +97,7 @@ function ExperienceCard({
         delay: isOpen ? staggerMenuItems : 0,
       }
     );
-  }, [isOpen]);
+  }, [isOpen, isSmallDevice]);
 
   return (
     <motion.button

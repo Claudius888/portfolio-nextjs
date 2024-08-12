@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useScroll, motion, useTransform, useMotionValue } from 'framer-motion';
 import { cn } from '../lib/utils';
 import FramerBtn from './FramerBtn';
+import ProfilePic from '../../public/gradient_bg_face.jpg';
 import {
   DESKTOP,
   MOBILE,
@@ -9,6 +10,7 @@ import {
   TABLET,
   useDeviceDetection,
 } from '../lib/hooks';
+import Image from 'next/image';
 
 const MobileFooter = () => {
   const x = useMotionValue(50);
@@ -17,7 +19,7 @@ const MobileFooter = () => {
   const isSmallMobile = SMALL_MOBILE === device;
   return (
     <motion.div
-      style={{ y:0 }}
+      style={{ y: 0 }}
       className={cn('w-full pb-0 overflow-hidden items-end')}
     >
       <footer className='section bg-dark overflow-clip'>
@@ -43,11 +45,13 @@ const MobileFooter = () => {
                 <span className='block'>
                   <div
                     className='mr-1 h-[.85em] w-[.85em] translate-y-[0.09em] relative inline-flex rounded-[50%]'
-                    // style={{
-                    //   backgroundImage: 'url("/images/1.jpg")',
-                    //   backgroundSize: 'cover',
-                    // }}
-                  />
+                  >
+                    <Image
+                      src={ProfilePic}
+                      className='object-cover inline-flex rounded-[50%]'
+                      alt='profile-image '
+                    />
+                  </div>
                   Let&apos;s work
                 </span>
                 <span className='block'>together</span>
@@ -75,32 +79,14 @@ const MobileFooter = () => {
               </div>
             </div>
           </div>
-          {/* row */}
           <div className='row pb-0 lg:pb-11 w-full md:w-auto mt-[3rem] h-[20vh] relative'>
-            {/* <div className='flex-colf flex flex-col w-full md:w-auto md:flex-row '> */}
             <div className='flex flex-col gap-5 items-center'>
-              {/* <FramerBtn
-                key={'email-32'}
-                keystr={'email-32'}
-                background='transparent'
-                label='joshmarion777@gmail.com'
-                type='flatRounded'
-                outerStyleParam={{}}
-              /> */}
               <button className='w-[80vw] h-[3rem] bg-transparent text-white rounded-3xl border-2'>
                 joshmarion777@gmail.com
               </button>
               <button className='w-[80vw] h-[3rem] bg-transparent text-white rounded-3xl border-2'>
                 +33 780 800 970
               </button>
-              {/* <FramerBtn
-                key={'phone-12'}
-                keystr={'phone-12'}
-                background='transparent'
-                label='+33 7 80 80 09 70'
-                type='flatRounded'
-                outerStyleParam={{ marginLeft: '1rem' }}
-              /> */}
             </div>
           </div>
         </div>
@@ -157,13 +143,13 @@ export default function Footer() {
               </div>
               <h2 className='text-white'>
                 <span className='block'>
-                  <div
-                    className='mr-1 h-[.85em] w-[.85em] translate-y-[0.09em] relative inline-flex rounded-[50%]'
-                    // style={{
-                    //   backgroundImage: 'url("/images/1.jpg")',
-                    //   backgroundSize: 'cover',
-                    // }}
-                  />
+                  <div className='mr-1 h-[.85em] w-[.85em] translate-y-[0.09em] relative inline-flex rounded-[50%]'>
+                    <Image
+                      src={ProfilePic}
+                      className='object-cover inline-flex rounded-[50%]'
+                      alt='profile-image '
+                    />
+                  </div>
                   Let&apos;s work
                 </span>
                 <span className='block'>together</span>
