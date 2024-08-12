@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 
+const SMALL_MOBILE = 'SMALL_MOBILE'
 const MOBILE = 'MOBILE'
 const DESKTOP = 'DESKTOP'
 const TABLET = 'TABLET'
@@ -10,11 +11,15 @@ export const useDeviceDetection = () => {
   useEffect(() => {
     const handleDeviceDetection = () => {
       const userAgent = navigator.userAgent.toLowerCase();
-      const isMobile = /iphone|ipad|ipod|android|blackberry|windows phone/g.test(userAgent);
-      const isTablet = /(ipad|tablet|playbook|silk)|(android(?!.*mobile))/g.test(userAgent);
+      const isMobile = /iphone|ipad|ipod|android|blackberry|windows phone/g.test(userAgent) || window.innerWidth <= 768;
+      const isTablet = /(ipad|tablet|playbook|silk)|(android(?!.*mobile))/g.test(userAgent) || window.innerWidth <= 768;
 
       if (isMobile) {
-        setDevice(MOBILE);
+        if(window.innerWidth <= 380) {
+          setDevice(SMALL_MOBILE)
+        }else {
+          setDevice(MOBILE);
+        }
       } else if (isTablet) {
         setDevice(TABLET);
       } else {
@@ -33,7 +38,7 @@ export const useDeviceDetection = () => {
   return device;
 };
 
-export { MOBILE, DESKTOP, TABLET }
+export { MOBILE, DESKTOP, TABLET, SMALL_MOBILE }
 
 export const useOutsideClick = (
   ref: React.RefObject<HTMLDivElement>,

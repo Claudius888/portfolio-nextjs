@@ -77,7 +77,7 @@ export default function FramerBtn({
       <motion.div
         onPointerMove={(event) => {
           const item = event.currentTarget;
-          setTransform(item, event, x, y);
+            setTransform(item, event, x, y);
         }}
         key={`${keystr}-outer`}
         onPointerLeave={() => {

@@ -22,17 +22,11 @@ function checkWhitespace(str: string) {
 }
 
 export default function Skills() {
-  const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ['start end', 'end start'],
-  });
 
   return (
     <div
-      ref={container}
       className='px-8 h-full w-full max-w-5xl mx-auto relative py-[12vh] grid
-    grid-cols-2 lg:grid-cols-3 gap-x-12 
+    grid-cols-2 lg:grid-cols-3 gap-x-12\
     lg:gap-x-16 gap-y-16 lg:gap-y-20 z-[2]'
     >
       {skills.map((words, i) => {
@@ -40,8 +34,8 @@ export default function Skills() {
           i == 0
             ? 'bg-clip-text bg-white-gradient text-transparent'
             : words[1].length > 8 && !checkWhitespace(words[1])
-            ? 'text-3xl font-bold lg:text-5xl'
-            : 'font-bold text-4xl lg:text-5xl';
+            ? 'text-3xl font-bold md:text-5xl'
+            : 'font-medium text-4xl md:font-bold md:text-5xl';
 
         return (
           <React.Fragment key={`${i}-container`}>
@@ -50,7 +44,7 @@ export default function Skills() {
                 key={`${i}-outer`}
                 className='font-medium 
                     flex flex-col bg-clip-text 
-                    bg-white-gradient text-transparent 
+                    bg-white-gradient text-transparent
                     overflow-visible'
               >
                 <span key={`${i}-adj`} className='text-white opacity-30'>
