@@ -5,7 +5,6 @@ import GButton from './GButton';
 function HeroMobile() {
   return (
     <>
-      {/* <div id="background__noisy" /> */}
       <div className='relative z-[1]'>
         <div className='w-full'>
           <div className='max-w-4xl mx-auto pb-28 pt-16 md:py-28 relative z-1 grid grid-cols-1 gap-8 px-6'>
@@ -15,7 +14,7 @@ function HeroMobile() {
                 className=''
               />
               <h1
-                className='animated-js text-center text-6xl md:text-2xl font-bold 
+                className='animated-js text-center text-6xl md:text-7xl font-bold 
               mt-1 bg-text-gradient-1 bg-clip-text text-transparent text-wrap'
               >
                 Frontend Developer

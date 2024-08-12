@@ -34,6 +34,7 @@ const satoshi = localFont({
   variable: '--font-satoshi',
 })
 
+
 export const metadata: Metadata = {
   title: "Josh Portfolio",
   description: "Let's Explore",

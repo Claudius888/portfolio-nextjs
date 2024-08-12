@@ -16,6 +16,8 @@ import {
 } from 'framer-motion';
 import Lenis from 'lenis';
 import { useEffect, useRef, useState } from 'react';
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function Home() {
   const container = useRef(null);
@@ -97,16 +99,9 @@ export default function Home() {
           )}
         </div>
       </div>
-
-      {/* <div className='flex relative h-screen items-center justify-center flex-col pt-[1vh]'>
-      </div> */}
       <Footer />
+      <Analytics />
+      <SpeedInsights />
     </main>
   );
-}
-
-{
-  /* <Suspense fallback={<Loader/>}>
-              <Experience />
-            </Suspense> */
 }
