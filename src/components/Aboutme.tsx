@@ -1,6 +1,6 @@
 "use client";
-import { useScroll, motion, MotionAdvancedProps, useTransform } from 'framer-motion'
-import React, { useEffect, useRef } from 'react'
+import { useScroll, motion, useTransform } from 'framer-motion'
+import React, { useRef } from 'react'
 import { cn } from '../lib/utils'
 
 const ABOUT_STR = "I'm a software developer with a strong focus on developing bug-free smooth user experiences."
@@ -8,7 +8,7 @@ const ABOUT_STR = "I'm a software developer with a strong focus on developing bu
 export default function Aboutme({ progress }) {
   return (
     <div className="flex w-2/3 flex-col items-center">
-      <p className="text-center bg-clip-text text-transparent text-sm font-extrabold bg-white-gradient uppercase mb-4">ABOUT ME</p>
+      <p className="text-center text-xl font-black text-white-gradient uppercase mb-4">ABOUT ME</p>
       <Words value={ABOUT_STR} progress={progress} />
     </div>
   )
@@ -28,7 +28,7 @@ function Words({ value, progress }: { value: string }) {
   const words = value.split(' ')
   return (
     <h3
-      className="font-semibold text-5xl lg:text-7xl text-center w-full mx-auto max-w-4xl
+      className="font-black text-5xl lg:text-7xl text-center w-full mx-auto max-w-4xl
      leading-tight lg:leading-tight flex flex-wrap gap-3 justify-center"
       ref={el}>
       {words.map((word: string, i: number) => {
