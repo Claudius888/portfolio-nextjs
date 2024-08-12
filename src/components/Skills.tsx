@@ -1,6 +1,5 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import GButton from './GButton';
-import { motion, useScroll, useTransform } from 'framer-motion';
 const skills = [
   [
     'Here is a little bit about',

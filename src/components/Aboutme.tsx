@@ -1,11 +1,11 @@
 "use client";
-import { useScroll, motion, useTransform } from 'framer-motion'
+import { useScroll, motion, useTransform, MotionValue } from 'framer-motion'
 import React, { useRef } from 'react'
 import { cn } from '../lib/utils'
 
 const ABOUT_STR = "I'm a software developer with a strong focus on developing bug-free smooth user experiences."
 
-export default function Aboutme({ progress }) {
+export default function Aboutme({ progress }: { progress: MotionValue<number> }) {
   return (
     <div className="flex w-2/3 flex-col items-center">
       <p className="text-center text-xl font-black text-white-gradient uppercase mb-4">ABOUT ME</p>
@@ -14,7 +14,7 @@ export default function Aboutme({ progress }) {
   )
 }
 
-function Words({ value, progress }: { value: string }) {
+function Words({ value, progress }: { value: string, progress: MotionValue<number> }) {
   const el = useRef(null)
   const { scrollYProgress } = useScroll({
     target: el,

@@ -4,15 +4,9 @@ import { useWindowSize } from 'usehooks-ts';
 import { BackgroundGradient } from './BackgroundGradient';
 import { Icons } from './ui/Icons';
 import { SMALL_MOBILE, useDeviceDetection } from '@/lib/hooks';
+import { experienceProp } from '@/lib/types';
 
-interface experience {
-  title: string;
-  company: string;
-  endTime: string;
-  tools: string[] | [];
-}
-
-const experienceArr = [
+const experienceArr:experienceProp[] = [
   {
     title: 'Frontend Developer',
     company: 'WEBNEXS',
@@ -41,7 +35,7 @@ const experienceArr = [
   {
     title: 'Software Engineer \n(React Native)',
     company: 'COREFUL',
-    endtime: '06/21',
+    endTime: '06/21',
     tools: ['React', 'React Native', 'Javascript'],
   },
   {
@@ -53,7 +47,7 @@ const experienceArr = [
 ];
 
 interface mobileExpericeCardProps {
-  experience: experience;
+  experience: experienceProp;
   isOpen: boolean;
   setExpanded: (isOpen: number | false) => void;
   idx: number;
@@ -169,7 +163,7 @@ function ExperienceCard({
   );
 }
 
-function PCExperienceCard({ experience }: { experience: experience }) {
+function PCExperienceCard({ experience }: { experience: experienceProp }) {
   const [isFocused, onHover] = useCycle(false, true);
   return (
     <BackgroundGradient
