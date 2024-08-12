@@ -52,9 +52,9 @@ export default function Home() {
   const device = useDeviceDetection();
   const isSmallMobile = device === SMALL_MOBILE
 
-  useEffect(() => {
-    console.log(device);
-  }, [device]);
+  // useEffect(() => {
+  //   console.log(device);
+  // }, [device]);
 
   const height = useTransform(scrollYProgress, [0, 0.9], [50, 0]);
 
