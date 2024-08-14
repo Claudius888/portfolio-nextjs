@@ -11,8 +11,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState<boolean | null | undefined>(null);
   const { getItem } = useCheckStorageonPageLoad();
-
   const [sessionItem, setSessionItem] = useState<boolean | null | undefined>(null);
+
   useEffect(() => {
     if (isLoading !== null || typeof isLoading !== 'undefined') {
       (async () => {
@@ -34,10 +34,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
         setSessionItem(localstorageitem)
     }
   }, []);
-
-//   useEffect(() => {
-//     console.log(sessionItem, "isloading", isLoading)
-//   }, [sessionItem, isLoading])
 
   return (
     <main>
