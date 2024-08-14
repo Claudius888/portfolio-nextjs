@@ -6,7 +6,7 @@ function HeroMobile() {
   return (
     <>
       <div className='relative z-[1]'>
-        <div className='w-full'>
+        <div className='w-full pt-16 md:pt-0'>
           <div className='max-w-4xl mx-auto pb-28 pt-16 md:py-28 relative z-1 grid grid-cols-1 gap-8 px-6'>
             <span className='flex items-center flex-col relative overflow-clip'>
               <FlipWords
