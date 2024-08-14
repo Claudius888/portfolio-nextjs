@@ -8,3 +8,6 @@ export interface experienceProp {
     endTime: string;
     tools: string[] | [];
   }
+
+
+export const localStorageKey = 'initial-animation';

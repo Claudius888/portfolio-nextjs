@@ -25,7 +25,7 @@ export default function Skills() {
   return (
     <div
       className='px-8 h-full w-full max-w-5xl mx-auto relative py-[12vh] grid
-    grid-cols-2 lg:grid-cols-3 gap-x-12\
+    grid-cols-2 lg:grid-cols-3 gap-x-12
     lg:gap-x-16 gap-y-16 lg:gap-y-20 z-[2]'
     >
       {skills.map((words, i) => {

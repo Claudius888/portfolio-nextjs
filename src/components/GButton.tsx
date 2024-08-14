@@ -3,7 +3,10 @@ import React from 'react'
 
 export default function GButton({ label, style, textStyle }: { label: string; style?: string, textStyle ?:string }) {
   return (
-    <div className={`text-center flex justify-center ${style}`} style={{}}>
+    <a className={`text-center flex justify-center ${style} cursor-pointer`} style={{}}
+    href='https://github.com/Claudius888'
+    target='_blank'
+    >
       <div className="max-w-max relative z-2 group">
         <button
           className="bg-text-gradient-1 py-3 px-8 
@@ -15,6 +18,6 @@ export default function GButton({ label, style, textStyle }: { label: string; st
         </button>
         <div className="bg-black bg-opacity-40 transition-all duration-200 opacity-0 group-hover:opacity-100 w-2/3 h-[8px] absolute -bottom-1 left-1/2 -z-1 -translate-x-1/2 blur-md"></div>
       </div>
-    </div>
+    </a>
   )
 }

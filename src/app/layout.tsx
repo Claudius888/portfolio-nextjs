@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import 'lenis/dist/lenis.css'
 import localFont from 'next/font/local'
+import { Toaster } from 'sonner'
 
 
 // const inter = Inter({ subsets: ["latin"] });
@@ -47,7 +48,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${satoshi.variable}`}>{children}</body>
+      <body className={`${satoshi.variable}`}>
+        <Toaster/>
+        {children}
+        </body>
     </html>
   );
 }

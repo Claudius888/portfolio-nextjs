@@ -11,19 +11,36 @@ import {
   useDeviceDetection,
 } from '../lib/hooks';
 import Image from 'next/image';
+import { toast } from 'sonner';
+import { Button } from './ui/button';
 
-const MobileFooter = () => {
+
+async function copyText(text:string) {
+  const message = text.indexOf('@') > -1 ? 'Email copied' : 'Phone number copied'
+  try {
+    await navigator.clipboard.writeText(text)
+    toast.success(message)
+  } catch (error) {
+    console.error(error)
+    toast.error("An Error Occured")
+  }
+}
+
+
+export const MobileFooter = () => {
   const x = useMotionValue(50);
   const y = useMotionValue(0);
   const device = useDeviceDetection();
   const isSmallMobile = SMALL_MOBILE === device;
+
+
   return (
-    <motion.div
-      style={{ y: 0 }}
-      className={cn('w-full pb-0 overflow-hidden items-end')}
+    <div
+      // style={{ y: 0 }}
+      className={cn('w-full h-min')}
     >
-      <footer className='section bg-dark overflow-clip'>
-        <div className={cn('flex flex-col medium')}>
+      <footer className='section h-min bg-dark'>
+        <div className={cn('flex flex-col h-min medium')}>
           <div className='flex flex-wrap pb-[calc(var(--section-padding)/2)] relative'>
             <div className='flex-colf'>
               <div className='absolute right-0 bottom-[calc(var(--gap-padding)*1.5)] w-arrow'>
@@ -79,19 +96,28 @@ const MobileFooter = () => {
               </div>
             </div>
           </div>
-          <div className='row pb-0 lg:pb-11 w-full md:w-auto mt-[3rem] h-[20vh] relative'>
-            <div className='flex flex-col gap-5 items-center'>
-              <button className='w-[80vw] h-[3rem] bg-transparent text-white rounded-3xl border-2'>
+          <div className='row pb-0 lg:pb-11 w-full md:w-auto mt-[3rem] h-[20vh] relative pointer-events-none'>
+            <div className='flex flex-col gap-5 items-center pointer-events-none z-20'>
+              <Button variant={'outline'}
+              className='w-[80vw] h-[3rem] bg-transparent text-white rounded-3xl border-2 cursor-pointer'
+              onClick={() => copyText('joshmarion777@gmail.com')}
+              >
                 joshmarion777@gmail.com
-              </button>
-              <button className='w-[80vw] h-[3rem] bg-transparent text-white rounded-3xl border-2'>
+
+              </Button>
+              {/* <button className='w-[80vw] h-[3rem] bg-transparent text-white rounded-3xl border-2 cursor-pointer'
+              >
+              </button> */}
+              <button className='w-[80vw] h-[3rem] bg-transparent text-white rounded-3xl border-2 cursor-pointer'
+              onClick={() => copyText('+33780800970')}
+              >
                 +33 780 800 970
               </button>
             </div>
           </div>
         </div>
       </footer>
-    </motion.div>
+    </div>
   );
 };
 
@@ -107,14 +133,6 @@ export default function Footer() {
   const rotate = useTransform(scrollYProgress, [0, 1], [120, 90]);
   const x = useTransform(scrollYProgress, [0, 1], [0, 50]);
   const y = useTransform(scrollYProgress, [0, 1], [-500, 0]);
-
-  // useEffect(() => {
-  //   console.log(x, y, scrollYProgress)
-  // }, [x, y, scrollYProgress])
-
-  if (device === MOBILE || device === TABLET || device == SMALL_MOBILE) {
-    return <MobileFooter />;
-  }
 
   return (
     <motion.div
@@ -173,7 +191,7 @@ export default function Footer() {
             </div>
           </div>
           <div className='row pb-11'>
-            <div className='flex-colf flex flex-row'>
+            <div className='flex-colf flex flex-row cursor-pointer'>
               {/* <div className="w-full grid grid-flow-col grid-rows-2 place-items-stretch"> */}
               <FramerBtn
                 key={'email-32'}
@@ -182,13 +200,16 @@ export default function Footer() {
                 label='joshmarion777@gmail.com'
                 type='flatRounded'
                 outerStyleParam={{}}
+                onClick={() => copyText('joshmarion777@gmail.com')}
               />
+
               <FramerBtn
                 key={'phone-12'}
                 keystr={'phone-12'}
                 background='transparent'
                 label='+33 7 80 80 09 70'
                 type='flatRounded'
+                onClick={() => copyText('+33780800970')}
                 outerStyleParam={{ marginLeft: '1rem' }}
               />
             </div>

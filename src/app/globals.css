@@ -2,53 +2,106 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  --container-padding: 6vw;
-  --section-padding: clamp(5em, 21vh, 12em);
-  --gap-padding: clamp(1.5em, 4vw, 2.5em);
-  --dark: '#1C1D20';
-  --blue: '#455CE9';
-  --color-dark: #1c1d20;
-  --color-dark-dark: #141517;
-  --color-light: #ffffff;
-  --color-blue: #455ce9;
-  --color-blue-dark: #334bd3;
-  --color-gray: #999d9e;
-  --color-lightgray: #e9eaeb;
-  --color-white: #ffffff;
-  --color-border: rgba(28, 29, 32, 0.175);
-  --color-border-solid: #d2d2d2;
-  --color-border-light: rgba(255, 255, 255, 0.2);
-  --color-border-solid-light: #545557;
-  --color-text: #1c1d20;
-  --color-text-light: #fff;
-  --alert-error: #ff4444;
-  --alert-success: #24c958;
-  --animation-primary: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
-  --animation-fast: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
-  --animation-smooth: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
-  --animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
-  --section-padding: clamp(5em, 21vh, 12em);
-  --container-padding: clamp(2.5em, 8vw, 8em);
-  --gap-padding: clamp(1.5em, 4vw, 2.5em);
-  --vh: 8.44px;
-}
-
-@media screen and (max-width: 540px) {
-  :root {
-    --color-border: rgba(28, 29, 32, 0.225);
-    --color-border-light: rgba(255, 255, 255, 0.225);
-    --container-padding: clamp(1.25em, 4vw, 2.5em);
-    --section-padding: max(2.5em, 12vh);
-  }
-}
-
 @layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --container-padding: 6vw;
+    --section-padding: clamp(5em, 21vh, 12em);
+    --gap-padding: clamp(1.5em, 4vw, 2.5em);
+    --dark: '#1C1D20';
+    --blue: '#455CE9';
+    --color-dark: #1c1d20;
+    --color-dark-dark: #141517;
+    --color-light: #ffffff;
+    --color-blue: #455ce9;
+    --color-blue-dark: #334bd3;
+    --color-gray: #999d9e;
+    --color-lightgray: #e9eaeb;
+    --color-white: #ffffff;
+    --color-border: rgba(28, 29, 32, 0.175);
+    --color-border-solid: #d2d2d2;
+    --color-border-light: rgba(255, 255, 255, 0.2);
+    --color-border-solid-light: #545557;
+    --color-text: #1c1d20;
+    --color-text-light: #fff;
+    --alert-error: #ff4444;
+    --alert-success: #24c958;
+    --animation-primary: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+    --animation-fast: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    --animation-smooth: all 0.7s cubic-bezier(0.7, 0, 0.3, 1);
+    --animation-slow: all 0.9s cubic-bezier(0.7, 0, 0.3, 1);
+    --section-padding: clamp(5em, 21vh, 12em);
+    --container-padding: clamp(2.5em, 8vw, 8em);
+    --gap-padding: clamp(1.5em, 4vw, 2.5em);
+    --vh: 8.44px;
+  }
+  /* 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  } */
+
+  @media screen and (max-width: 540px) {
+    :root {
+      --color-border: rgba(28, 29, 32, 0.225);
+      --color-border-light: rgba(255, 255, 255, 0.225);
+      --container-padding: clamp(1.25em, 4vw, 2.5em);
+      --section-padding: max(2.5em, 12vh);
+    }
+  }
+
   h2 {
     font-size: calc(clamp(3.25em, 7vw, 8em) * 0.875);
+  }
+
+  * {
+    @apply border-border;
   }
 
   h1 {
@@ -253,7 +306,6 @@
 
 @media screen and (max-width: 540px) {
   .section {
-    display: block;
     padding-top: calc(var(--section-padding) * 0.1);
     padding-bottom: var(--section-padding);
     position: relative;
@@ -271,14 +323,8 @@ body,
 
 body {
   font-family: 'Satoshi';
+  background-color: var(--color-dark);
 }
-
-body::before {
-  background: #8c8c8c;
-  filter: url(#noiseFilter);
-}
-
-/* color: 'trasparent'; */
 .animated-js,
 .text-gradient,
 .char,
@@ -397,75 +443,3 @@ a {
   flex-direction: column;
   padding: 16px 0;
 }
-
-/* .blob-cont {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: -2;
-  height: 500px;
-  width: 500px;
-  position: relative;
-  right: 5em;
-} */
-
-/* 
-.blob {
-  border-radius: 100px;
-  filter: blur(60px);
-}
-
-.yellow {
-  background-color: var(--yellow);
-  position: absolute;
-  top: 200px;
-  left: 100px;
-  height: 200px;
-  width: 200px;
-  
-  animation: yellow 8s infinite ease;
-}
-
-.green {
-  background-color: var(--green);
-  position: absolute;
-  top: 80px;
-  right: -20px;
-  height: 200px;
-  width: 250px;
-  
-  animation: green 8s infinite ease;
-}
-
-.red {
-  background-color: var(--red);
-  position: absolute;
-  right: 0;
-  top: 300px;
-  height: 250px;
-  width: 200px;
-  
-  animation: red 8s infinite linear;
-}
-
-@keyframes yellow {
-  0% {top: 200px; left: 100px; transform: scale(1);}
-  30% {top: 300px; left: 150px; transform: scale(1.2);}
-  60% {top: 100px; left: 200px; transform: scale(1.3);}
-  100% {top: 200px; left: 100px; transform: scale(1);}
-}
-
-@keyframes green {
-  0% {top: 80px; right: -20px; transform: scale(1.2);}
-  30% {top: 300px; right: -20px;transform: scale(1);}
-  60% {top: 200px; right: 100px;transform: scale(1);}
-  100% {top: 80px; right: -20px; transform: scale(1.2);}
-}
-
-@keyframes red {
-  0% {top: 250px; right: 0px; transform: scale(1);}
-  30% {top: 150px; right: 150px;transform: scale(1.4);}
-  60% {top: 250px; right: 100px;transform: scale(1);}
-  100% {top: 250px; right: 0px; transform: scale(1);}
-} */

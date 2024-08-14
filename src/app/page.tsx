@@ -2,11 +2,18 @@
 import Aboutme from '@/components/Aboutme';
 import { ContainerScroll } from '@/components/ContainerScroll';
 import ExperienceCards from '@/components/ExperienceSection';
-import Footer from '@/components/Footer';
+import Footer, { MobileFooter } from '@/components/Footer';
 import HeroMobile from '@/components/HeroMobile';
 import Preloader from '@/components/Preloader';
 import Skills from '@/components/Skills';
-import { SMALL_MOBILE, useDeviceDetection } from '@/lib/hooks';
+import {
+  DESKTOP,
+  MOBILE,
+  SMALL_MOBILE,
+  TABLET,
+  useCheckStorageonPageLoad,
+  useDeviceDetection,
+} from '@/lib/hooks';
 import { cn } from '@/lib/utils';
 import {
   useScroll,
@@ -16,11 +23,33 @@ import {
 } from 'framer-motion';
 import Lenis from 'lenis';
 import { useEffect, useRef, useState } from 'react';
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import Navbar from '@/components/Navbar';
+import { useRouter } from 'next/navigation';
+import { localStorageKey } from '@/lib/types';
 
 export default function Home() {
   const container = useRef(null);
+  const { getItem, setItem } = useCheckStorageonPageLoad();
+
+  const [isLoading, setIsLoading] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const storageitem = getItem(localStorageKey);
+    if (isLoading === null && typeof storageitem === 'undefined') {
+      document.body.style.overflow = 'hidden'
+      setIsLoading(true);
+
+    } else if(!storageitem) {
+      setIsLoading(false);
+    }
+  }, []);
+
+
+  // useEffect(() => {
+  //   console.log("isLoading.....",isLoading);
+  // }, [isLoading]);
 
   const { scrollYProgress } = useScroll({
     target: container,
@@ -35,33 +64,40 @@ export default function Home() {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-
     requestAnimationFrame(raf);
   }, []);
 
-  const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
-    (async () => {
-      setTimeout(() => {
-        setIsLoading(false);
-        document.body.style.cursor = 'default';
-        window.scrollTo(0, 0);
-      }, 2000);
-    })();
-  }, []);
+    if (isLoading || typeof isLoading === 'undefined') {
+      (async () => {
+        setTimeout(() => {
+          setItem(localStorageKey, false);
+          setIsLoading(false);
+          document.body.style.cursor = 'default';
+          window.scrollTo(0, 0);
+          document.body.style.overflow = ''
+        }, 2000);
+      })();
+    }
+  }, [isLoading]);
+
+
 
   const device = useDeviceDetection();
-  const isSmallMobile = device === SMALL_MOBILE;
+  const isSmallMobile = device === SMALL_MOBILE || device === TABLET || device === MOBILE;
 
   const height = useTransform(scrollYProgress, [0, 0.9], [50, 0]);
 
   return (
-    <main className='flex relative flex-col bg-dark overflow-clip font-satoshi'>
+    <main
+      ref={container}
+      className='flex relative flex-col bg-dark overflow-clip font-satoshi'
+    >
       <AnimatePresence mode='wait'>
         {isLoading && <Preloader />}
       </AnimatePresence>
-      <div className='bg-transparent bg-grid-white/[0.1] items-center flex flex-col'>
+      {!isLoading && <Navbar />}
+      <div className='bg-transparent bg-grid-white/[0.1] items-center flex flex-col relative overflow-hidden'>
         <div className='absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]'></div>
         <div className='relative'>
           <HeroMobile />
@@ -84,8 +120,8 @@ export default function Home() {
 
         <div
           className={cn(
-            'flex flex-col w-screen h-screen z-10 md:bg-dark mt-28  overflow-hidden',
-            isSmallMobile && 'pb-10'
+            'flex flex-col w-screen h-screen z-10 md:bg-dark mt-28',
+            isSmallMobile && 'pb-10 h-min'
           )}
         >
           <Skills />
@@ -98,8 +134,9 @@ export default function Home() {
             </motion.div>
           )}
         </div>
+        {isSmallMobile && <MobileFooter />}
       </div>
-      <Footer />
+      {device === DESKTOP && <Footer />}
       <Analytics />
       <SpeedInsights />
     </main>

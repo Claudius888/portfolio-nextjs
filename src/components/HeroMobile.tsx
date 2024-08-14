@@ -21,7 +21,7 @@ function HeroMobile() {
               </h1>
             </span>
             <h2 className='text-[#DFE5EC] text-lg text-center mx-auto max-w-xl font-normal'>
-              Hi 👋. My name is Josh, and I am a Javascript developer living in
+              Hi 👋. My name is <span className='text-sky-300 text-2xl font-bold'>Joshua</span>, and I am a Javascript developer living in
               UK & working remotely with the whole world.
             </h2>
             <div className='text-center flex justify-center'>
