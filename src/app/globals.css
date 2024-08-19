@@ -33,10 +33,12 @@
     --section-padding: clamp(5em, 21vh, 12em);
     --gap-padding: clamp(1.5em, 4vw, 2.5em);
     --dark: '#1C1D20';
+    --background-color: var(--color-dark);
+    color-scheme: only dark;
     --blue: '#455CE9';
     --color-dark: #1c1d20;
     --color-dark-dark: #141517;
-    --color-light: #ffffff;
+    --color-light: #1c1d20;
     --color-blue: #455ce9;
     --color-blue-dark: #334bd3;
     --color-gray: #999d9e;
@@ -59,7 +61,7 @@
     --gap-padding: clamp(1.5em, 4vw, 2.5em);
     --vh: 8.44px;
   }
-  /* 
+  
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -85,7 +87,7 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-  } */
+  }
 
   @media screen and (max-width: 540px) {
     :root {
@@ -136,6 +138,7 @@
     color: white;
   }
 }
+
 
 @layer utilities {
   .medium {
@@ -319,11 +322,11 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  background-color: '#1C1D20';
 }
 
 body {
   font-family: 'Satoshi';
-  background-color: var(--color-dark);
 }
 .animated-js,
 .text-gradient,

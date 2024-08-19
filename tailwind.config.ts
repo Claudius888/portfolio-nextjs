@@ -8,6 +8,7 @@ const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 const config = {
+  darkMode: ['class'],
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
@@ -32,6 +33,7 @@ const config = {
         foreground: 'hsl(var(--foreground))',
         dark: '#1C1D20',
         blue: '#455CE9',
+        'black-dark': '#1C1D20',
         'color-border': 'rgba(28, 29, 32, 0.175)',
         primary: {
           DEFAULT: 'hsl(var(--primary))',

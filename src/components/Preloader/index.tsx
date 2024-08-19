@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { motion, useWillChange } from 'framer-motion';
 import { opacity, slideUp } from './anim';
+import { Dot } from 'lucide-react';
 
 const words = ["Hello", "Bonjour", "Ciao", "Olà", "やあ", "Hallå", "Guten tag", "Hallo"]
 
@@ -38,16 +39,20 @@ export default function Preloader() {
     return (
         <motion.div variants={slideUp} initial="initial" exit="exit" className='h-[100vh] w-[100vw] flex items-center justify-center fixed z-50 bg-[#141516]'>
             {dimension.width > 0 && 
-            <>
+            <div className='min-h-[3rem] min-w-[15rem] bg-green-500'>
                 <motion.p variants={opacity} initial="initial" animate="enter"
                 style={{willChange}}
-                className='flex text-white text-5xl items-center absolute z-1'
-                ><span className='block w-3 h-3 bg-white rounded-[50%] mr-3'>
-                    </span>{words[index]}</motion.p>
+                className='flex text-white text-5xl items-center z-1'
+                >
+                    {/* <span className='block w-3 h-3 bg-white rounded-[50%] mr-3'>
+                    </span> */}
+                    <Dot className='w-10 h-10 mr-3 inset-0'/>
+                    {words[index]}
+                    </motion.p>
                 <svg className='absolute top-0 w-full h-[calc(100%_+_300px]'>
                     <motion.path variants={curve} initial="initial" exit="exit" className='fill-[#141516]'></motion.path>
                 </svg>
-            </>
+            </div>
             }
         </motion.div>
     )

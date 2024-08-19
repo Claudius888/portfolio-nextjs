@@ -81,18 +81,31 @@ export default function Home() {
 
   const height = useTransform(scrollYProgress, [0, 0.9], [50, 0]);
 
-  const willChange = useWillChange()
+  const willChange = useWillChange();
 
   return (
     <main
       ref={container}
-      className='flex relative flex-col bg-dark overflow-clip font-satoshi'
+      className='flex relative flex-col bg-black-dark overflow-clip font-satoshi'
     >
       <AnimatePresence mode='wait'>
         {isLoading && <Preloader />}
       </AnimatePresence>
-      {/* {(!isLoading && isLoading !== null) && ( */}
-        <motion.div style={{willChange}} className={cn('relative', (!isLoading && isLoading !== null) ? 'visible' : 'invisible pointer-events-none')}>
+      {/* {!isLoading && isLoading !== null && ( */}
+        <motion.div
+          style={{ willChange }}
+          animate ={{
+            opacity: (!isLoading && isLoading !== null) ? 1 : 0
+          }}
+          transition={{
+            ease: 'easeInOut',
+            delay: 1000
+          }}
+          className={cn(
+            'relative',
+            (isLoading && isLoading == null) && 'pointer-events-none'
+          )}
+        >
           <Navbar />
           <div className='bg-transparent bg-grid-white/[0.1] items-center flex flex-col relative overflow-hidden'>
             <div className='absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]'></div>
