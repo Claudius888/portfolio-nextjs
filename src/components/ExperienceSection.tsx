@@ -3,7 +3,7 @@ import { LayoutGroup, motion, stagger, useAnimate, useCycle } from 'framer-motio
 import { useWindowSize } from 'usehooks-ts';
 import { BackgroundGradient } from './BackgroundGradient';
 import { Icons } from './ui/Icons';
-import { SMALL_MOBILE, useDeviceDetection } from '@/lib/hooks';
+import { MOBILE, SMALL_MOBILE, useDeviceDetection } from '@/lib/hooks';
 import { experienceProp } from '@/lib/types';
 
 const experienceArr:experienceProp[] = [
@@ -215,6 +215,8 @@ function ExperienceCards() {
   const { width = 0, height = 0 } = useWindowSize();
   const [isMobileScreen, setIsMobileScreen] = useState<boolean | null>(null);
   const [expanded, setExpanded] = useState<number | false>(false);
+  
+  // const device = useDeviceDetection()
 
   const isMobile = useCallback(() => {
     if (width && width < 768) return true;
@@ -224,6 +226,11 @@ function ExperienceCards() {
   useEffect(() => {
     setIsMobileScreen(() => isMobile());
   }, [isMobile]);
+
+  // useEffect(() => {
+  //   setIsMobileScreen(() => [SMALL_MOBILE , MOBILE].includes(device));
+  // }, [device]);
+  
 
   return (
     <div className='md:max-w-[70vw] relative'>

@@ -7,7 +7,7 @@ import { HoverBorderGradient } from './HoverGradientBtn';
 const Navbar = () => {
   return (
     <nav
-      className='z-[100] h-[6rem] absolute inset-x-0 top-0 w-full
+      className='z-[8] h-[6rem] absolute inset-x-0 top-0 w-full
         px-7 md:px-60'
     >
       <>

@@ -6,6 +6,11 @@ import { localStorageKey } from '@/lib/types';
 import { AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const LazyTransition = dynamic(() =>
+  import('@/components/Preloader/Transition')
+);
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -39,7 +44,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
     <main>
       { (isLoading !== null || typeof isLoading !== 'undefined') &&
         <AnimatePresence mode='wait'>
-          {isLoading && <Transition pathname={pathname} />}
+          {isLoading && <LazyTransition pathname={pathname} />}
         </AnimatePresence>
       }
       {(!isLoading || sessionItem === null || sessionItem === undefined) && (
