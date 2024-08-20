@@ -4,6 +4,8 @@ import { devtools } from 'zustand/middleware';
 interface initialAnimationType {
   isinitialAnimation: boolean | null;
   toggle: () => void;
+  isAnimationComplete: boolean;
+  toggleAnimateComplete: () => void;
 }
 
 export const useIntialAnimation = create<initialAnimationType>()((set) => ({
@@ -15,5 +17,7 @@ export const useIntialAnimation = create<initialAnimationType>()((set) => ({
         // } else {
         //     return ({isinitialAnimation: false});
         // }
-    })
+    }),
+    isAnimationComplete: false,
+    toggleAnimateComplete: () => set((state) => ({isAnimationComplete: !state.isAnimationComplete}))
 }))

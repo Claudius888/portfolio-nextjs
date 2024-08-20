@@ -10,7 +10,6 @@ import {
   MOBILE,
   SMALL_MOBILE,
   TABLET,
-  useCheckStorageonPageLoad,
   useDeviceDetection,
 } from '@/lib/hooks';
 import { cn } from '@/lib/utils';
@@ -20,15 +19,15 @@ import {
   motion,
   AnimatePresence,
   useWillChange,
+  motionValue,
 } from 'framer-motion';
 import Lenis from 'lenis';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Navbar from '@/components/Navbar';
-import { localStorageKey } from '@/lib/types';
-import dynamic from 'next/dynamic';
 import { useIntialAnimation } from '@/lib/store';
+import dynamic from 'next/dynamic';
 
 const LazyMobileFooter = dynamic(() =>
   import('@/components/Footer').then((mod) => mod.MobileFooter)
@@ -41,22 +40,16 @@ export default function Home() {
   // const { getItem, setItem } = useCheckStorageonPageLoad();
 
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
+  // const motion0 = motionValue(0)
 
-  const { isinitialAnimation, toggle} = useIntialAnimation()
-
-  // useEffect(() => {
-  //   const storageitem = getItem(localStorageKey);
-  //   if (isLoading === null && typeof storageitem === 'undefined') {
-  //     document.body.style.overflow = 'hidden';
-  //     setIsLoading(true);
-  //   } else if (!storageitem) {
-  //     setIsLoading(false);
-  //   }
-  // }, []);
+  const {
+    isinitialAnimation,
+    toggle,
+    toggleAnimateComplete,
+  } = useIntialAnimation();
 
   useEffect(() => {
     if (isLoading === null && isinitialAnimation === null) {
-      document.body.style.overflow = 'hidden';
       setIsLoading(true);
     } else if (!isinitialAnimation) {
       setIsLoading(false);
@@ -64,9 +57,8 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    console.log("Init anim",isinitialAnimation)
-  }, [isinitialAnimation])
-
+    console.log('Init anim', isinitialAnimation);
+  }, [isinitialAnimation]);
 
   const { scrollYProgress } = useScroll({
     target: container,
@@ -84,37 +76,35 @@ export default function Home() {
     requestAnimationFrame(raf);
   }, []);
 
-  // useEffect(() => {
-  //   if (isLoading || typeof isLoading === 'undefined') {
-  //     (async () => {
-  //       setTimeout(() => {
-  //         setItem(localStorageKey, false);
-  //         setIsLoading(false);
-  //         document.body.style.cursor = 'default';
-  //         window.scrollTo(0, 0);
-  //         document.body.style.overflow = '';
-  //       }, 2000);
-  //     })();
-  //   }
-  // }, [isLoading]);
-
-
-    useEffect(() => {
+  useEffect(() => {
     if (isLoading || typeof isLoading === 'undefined') {
       (async () => {
         setTimeout(() => {
-          toggle()
-          setIsLoading(false)
+          toggle();
+          setIsLoading(false);
           document.body.style.cursor = 'default';
           window.scrollTo(0, 0);
-          document.body.style.overflow = '';
+          document.body.style.overflow = 'visible';
+          toggleAnimateComplete();
         }, 2000);
       })();
     }
   }, [isLoading]);
 
+  // const  setScrollVisiblity = useCallback(() => {
+  //   if (scrollYProgress > motion0 && isAnimationComplete) {
+  //     if (document.body.scrollHeight > window.innerHeight) {
+  //     }
+  //   } else if (!isAnimationComplete) {
+  //   }
+  // }, [scrollYProgress, isAnimationComplete])
+
+  // useEffect(() => {
+  //   setScrollVisiblity()
+  // }, [setScrollVisiblity]);
 
   const device = useDeviceDetection();
+
   const isSmallMobile =
     device === SMALL_MOBILE || device === TABLET || device === MOBILE;
 
@@ -125,7 +115,9 @@ export default function Home() {
   return (
     <main
       ref={container}
-      className='flex relative flex-col bg-black-dark overflow-clip font-satoshi'
+      className={cn(
+        'flex relative flex-col bg-black-dark overflow-clip font-satoshi'
+      )}
     >
       {isLoading === null && (
         <div className='min-h-screen min-w-screen bg-[#141516] absolute inset-0 z-[101]' />
@@ -151,7 +143,7 @@ export default function Home() {
         <Navbar />
         <div className='bg-transparent bg-grid-white/[0.1] items-center flex flex-col relative overflow-hidden'>
           <div className='absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]'></div>
-          <div className='relative'>
+          <div className='relative h-full w-full'>
             <HeroMobile />
             <ContainerScroll
               titleComponent={
@@ -186,7 +178,7 @@ export default function Home() {
               </motion.div>
             )}
           </div>
-          {isSmallMobile && <LazyMobileFooter/>}
+          {isSmallMobile && <LazyMobileFooter />}
         </div>
         {device === DESKTOP && <LazyDesktopFooter />}
       </motion.div>

@@ -88,7 +88,6 @@
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-
   @media screen and (max-width: 540px) {
     :root {
       --color-border: rgba(28, 29, 32, 0.225);
@@ -97,6 +96,24 @@
       --section-padding: max(2.5em, 12vh);
     }
   }
+
+  body {
+    overflow: hidden;
+  }
+  
+  body::-webkit-scrollbar {
+    scrollbar-width: thin;
+    background-color: #141516;
+    color: #948d82;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background-color: #3c3f41;
+  }
+  
+  /* body {
+    scrollbar-width: thin;
+  } */
 
   h2 {
     font-size: calc(clamp(3.25em, 7vw, 8em) * 0.875);
