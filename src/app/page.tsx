@@ -2,7 +2,6 @@
 import Aboutme from '@/components/Aboutme';
 import { ContainerScroll } from '@/components/ContainerScroll';
 import ExperienceCards from '@/components/ExperienceSection';
-import Footer, { MobileFooter } from '@/components/Footer';
 import HeroMobile from '@/components/HeroMobile';
 import Preloader from '@/components/Preloader';
 import Skills from '@/components/Skills';
@@ -29,6 +28,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import Navbar from '@/components/Navbar';
 import { localStorageKey } from '@/lib/types';
 import dynamic from 'next/dynamic';
+import { useIntialAnimation } from '@/lib/store';
 
 const LazyMobileFooter = dynamic(() =>
   import('@/components/Footer').then((mod) => mod.MobileFooter)
@@ -38,19 +38,35 @@ const LazyDesktopFooter = dynamic(() => import('@/components/Footer'));
 
 export default function Home() {
   const container = useRef(null);
-  const { getItem, setItem } = useCheckStorageonPageLoad();
+  // const { getItem, setItem } = useCheckStorageonPageLoad();
 
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
 
+  const { isinitialAnimation, toggle} = useIntialAnimation()
+
+  // useEffect(() => {
+  //   const storageitem = getItem(localStorageKey);
+  //   if (isLoading === null && typeof storageitem === 'undefined') {
+  //     document.body.style.overflow = 'hidden';
+  //     setIsLoading(true);
+  //   } else if (!storageitem) {
+  //     setIsLoading(false);
+  //   }
+  // }, []);
+
   useEffect(() => {
-    const storageitem = getItem(localStorageKey);
-    if (isLoading === null && typeof storageitem === 'undefined') {
+    if (isLoading === null && isinitialAnimation === null) {
       document.body.style.overflow = 'hidden';
       setIsLoading(true);
-    } else if (!storageitem) {
+    } else if (!isinitialAnimation) {
       setIsLoading(false);
     }
   }, []);
+
+  useEffect(() => {
+    console.log("Init anim",isinitialAnimation)
+  }, [isinitialAnimation])
+
 
   const { scrollYProgress } = useScroll({
     target: container,
@@ -68,12 +84,27 @@ export default function Home() {
     requestAnimationFrame(raf);
   }, []);
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   if (isLoading || typeof isLoading === 'undefined') {
+  //     (async () => {
+  //       setTimeout(() => {
+  //         setItem(localStorageKey, false);
+  //         setIsLoading(false);
+  //         document.body.style.cursor = 'default';
+  //         window.scrollTo(0, 0);
+  //         document.body.style.overflow = '';
+  //       }, 2000);
+  //     })();
+  //   }
+  // }, [isLoading]);
+
+
+    useEffect(() => {
     if (isLoading || typeof isLoading === 'undefined') {
       (async () => {
         setTimeout(() => {
-          setItem(localStorageKey, false);
-          setIsLoading(false);
+          toggle()
+          setIsLoading(false)
           document.body.style.cursor = 'default';
           window.scrollTo(0, 0);
           document.body.style.overflow = '';
@@ -81,6 +112,7 @@ export default function Home() {
       })();
     }
   }, [isLoading]);
+
 
   const device = useDeviceDetection();
   const isSmallMobile =

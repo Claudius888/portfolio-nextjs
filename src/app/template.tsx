@@ -7,6 +7,7 @@ import { AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+import { useIntialAnimation } from '@/lib/store';
 
 const LazyTransition = dynamic(() =>
   import('@/components/Preloader/Transition')
@@ -15,7 +16,8 @@ const LazyTransition = dynamic(() =>
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState<boolean | null | undefined>(null);
-  const { getItem } = useCheckStorageonPageLoad();
+  // const { getItem } = useCheckStorageonPageLoad();
+  const { isinitialAnimation } = useIntialAnimation()
   const [sessionItem, setSessionItem] = useState<boolean | null | undefined>(null);
 
   useEffect(() => {
@@ -31,14 +33,18 @@ export default function Template({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    const localstorageitem = getItem(localStorageKey)
-    if (isLoading === null && typeof localstorageitem === 'undefined') {
-        setIsLoading(localstorageitem);
-    } else if(!localstorageitem) {
+    // const localstorageitem = getItem(localStorageKey)
+    if (isLoading === null && isinitialAnimation === null) {
+        setIsLoading(isinitialAnimation);
+    } else if(!isinitialAnimation) {
         setIsLoading(true)
-        setSessionItem(localstorageitem)
+        setSessionItem(isinitialAnimation)
     }
   }, []);
+
+  useEffect(() => {
+    console.log("TRasnitions", isLoading, "seaaionItem", sessionItem)
+  }, [isLoading, sessionItem])
 
   return (
     <main>
