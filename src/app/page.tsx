@@ -33,6 +33,8 @@ const LazyMobileFooter = dynamic(() =>
 
 const LazyDesktopFooter = dynamic(() => import('@/components/Footer'));
 
+const LazyProjects  = dynamic(() => import('@/components/Projects').then((mod) => mod.Projects))
+
 export default function Home() {
   const container = useRef(null);
 
@@ -152,7 +154,7 @@ export default function Home() {
           <div className='absolute pointer-events-none inset-1 opacity-50 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]'></div>
           <Aboutme progress={scrollYProgress} />
 
-          <Projects />
+          <LazyProjects/>
 
           <div
             className={cn(
