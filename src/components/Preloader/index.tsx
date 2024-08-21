@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { motion, useAnimate, useAnimation, useWillChange } from 'framer-motion';
+import { motion, useWillChange } from 'framer-motion';
 import { opacity, slideUp } from './anim';
 import { Dot } from 'lucide-react';
 
@@ -9,7 +9,6 @@ const words = ["Hello", "Bonjour", "Ciao", "Olà", "やあ", "Hallå", "Guten ta
 export default function Preloader() {
     const [index, setIndex] = useState(0);
     const [dimension, setDimension] = useState({width: 0, height:0});
-    const [ scope, animate ] = useAnimate()
 
     useEffect( () => {
         setDimension({width: window.innerWidth, height: window.innerHeight})
@@ -37,7 +36,7 @@ export default function Preloader() {
     }
     const willChange = useWillChange()
     return (
-        <motion.div ref={scope} variants={slideUp} initial="initial" exit="exit" className='h-[100vh] w-[100vw] flex items-center justify-center fixed z-50 bg-[#141516]'>
+        <motion.div variants={slideUp} initial="initial" exit="exit" className='h-[100vh] w-[100vw] flex items-center justify-center fixed z-50 bg-[#141516]'>
             {/* {dimension.width > 0 &&  */}
             <div className='min-h-[3rem] min-w-[17rem]'>
                 <motion.p variants={opacity} initial="initial" animate="enter"
@@ -46,8 +45,6 @@ export default function Preloader() {
                 layoutId={`word-${index}`}
                 className='flex text-white text-5xl items-center text-center z-1 min-h-[3rem] min-w-[17rem] font-mono'
                 >
-                    {/* <span className='block w-3 h-3 bg-white rounded-[50%] mr-3'>
-                    </span> */}
                     <Dot className='w-10 h-10 mr-3 inset-0'/>
                     {words[index]}
                     </motion.p>

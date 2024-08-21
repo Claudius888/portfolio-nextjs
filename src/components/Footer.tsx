@@ -42,22 +42,7 @@ export const MobileFooter = () => {
       <footer className='section h-min bg-dark'>
         <div className={cn('flex flex-col h-min medium')}>
           <div className='flex flex-wrap pb-[calc(var(--section-padding)/2)] relative'>
-            <div className='flex-colf'>
-              <div className='absolute right-0 bottom-[calc(var(--gap-padding)*1.5)] w-arrow'>
-                <motion.svg
-                  style={{ scale: 2, rotate: 80 }}
-                  width='14'
-                  height='14'
-                  viewBox='0 0 9 9'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path
-                    d='M8 8.5C8.27614 8.5 8.5 8.27614 8.5 8L8.5 3.5C8.5 3.22386 8.27614 3 8 3C7.72386 3 7.5 3.22386 7.5 3.5V7.5H3.5C3.22386 7.5 3 7.72386 3 8C3 8.27614 3.22386 8.5 3.5 8.5L8 8.5ZM0.646447 1.35355L7.64645 8.35355L8.35355 7.64645L1.35355 0.646447L0.646447 1.35355Z'
-                    fill='white'
-                  />
-                </motion.svg>
-              </div>
+            <div className='flex-col flex'>
               <h2 className='text-white'>
                 <span className='block'>
                   <div
@@ -76,7 +61,7 @@ export const MobileFooter = () => {
             </div>
           </div>
           <div className='pb-[calc(var(--section-padding)*0.475)] flex flex-wrap relative'>
-            <div className='flex-col flex-colf w-full'>
+            <div className='flex-col flex w-full'>
               <div className='block w-full h-[1px] bg-slate-200' />
               {/* Mag Round btn */}
               <div
@@ -143,7 +128,7 @@ export default function Footer() {
       <footer className='section bg-dark overflow-clip'>
         <div className={cn('flex flex-col medium')}>
           <div className='flex flex-wrap pb-[calc(var(--section-padding)/2)] relative'>
-            <div className='flex-colf'>
+            <div className='flex flex-col lg:flex-none flex-colf'>
               <div className='absolute right-0 bottom-[calc(var(--gap-padding)*1.5)] w-arrow'>
                 <motion.svg
                   style={{ rotate, scale: 2 }}

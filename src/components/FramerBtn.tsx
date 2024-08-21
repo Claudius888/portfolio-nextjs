@@ -69,7 +69,7 @@ export default function FramerBtn({
   const textY = useTransform(y, (latest) => latest * 0.5);
 
   const outerStyle = type === rounded ? '' : 'flatbtn-outer cursor-pointer';
-  const innerStyle = type === rounded ? 'roundbtn' : 'btn-click flatbtn-inner';
+  const innerStyle = type === rounded ? 'roundbtn' : 'btn-click shadow-md flatbtn-inner';
   const textStyle = type === rounded ? 'text-wrap' : 'btn-text lg:px-3';
   const secondBtnStyle = device == DESKTOP ? outerStyleParam : {};
 

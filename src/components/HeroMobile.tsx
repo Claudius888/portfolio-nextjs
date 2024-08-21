@@ -6,7 +6,7 @@ function HeroMobile() {
   return (
     <>
       <div className='relative z-[1]'>
-        <div className='w-full pt-16 md:pt-0'>
+        <div className='w-full h-screen pt-16 md:pt-0'>
           <div
             className='
             max-w-4xl mx-auto pb-28 pt-16 
@@ -26,7 +26,7 @@ function HeroMobile() {
             </span>
             <h2 className='text-[#DFE5EC] text-lg text-center mx-auto max-w-xl font-sans'>
               Hi 👋. My name is{' '}
-              <span className='text-sky-300 text-2xl font-bold'>Joshua</span>,
+              <span className='text-white text-2xl font-bold'>Joshua</span>,
               and I am a Javascript developer living in UK & working remotely
               with the whole world.
             </h2>

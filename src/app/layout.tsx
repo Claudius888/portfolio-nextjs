@@ -48,8 +48,6 @@ export default function RootLayout({
   return (
     <html lang='en' className='dark'>
       <body className={`${satoshi.variable}`}>
-        {/* <meta name="color-scheme" content="only dark"/> */}
-
         <Toaster />
         {children}
         <Analytics />
