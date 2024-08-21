@@ -4,6 +4,8 @@ import './globals.css';
 import 'lenis/dist/lenis.css';
 import localFont from 'next/font/local';
 import { Toaster } from 'sonner';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 // const inter = Inter({ subsets: ["latin"] });
 
 const satoshi = localFont({
@@ -46,10 +48,12 @@ export default function RootLayout({
   return (
     <html lang='en' className='dark'>
       <body className={`${satoshi.variable}`}>
-      {/* <meta name="color-scheme" content="only dark"/> */}
-        
-          <Toaster />
-          {children}
+        {/* <meta name="color-scheme" content="only dark"/> */}
+
+        <Toaster />
+        {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

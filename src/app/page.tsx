@@ -23,8 +23,6 @@ import {
 } from 'framer-motion';
 import Lenis from 'lenis';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import Navbar from '@/components/Navbar';
 import { useIntialAnimation } from '@/lib/store';
 import dynamic from 'next/dynamic';
@@ -183,8 +181,6 @@ export default function Home() {
         {device === DESKTOP && <LazyDesktopFooter />}
       </motion.div>
       {/* )} */}
-      <Analytics />
-      <SpeedInsights />
     </main>
   );
 }

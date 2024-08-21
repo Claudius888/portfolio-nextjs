@@ -36,10 +36,6 @@ export default function Preloader() {
         }
     }
     const willChange = useWillChange()
-    useEffect(() => {
-        console.log(words[index], index)
-    }, [index])
-
     return (
         <motion.div ref={scope} variants={slideUp} initial="initial" exit="exit" className='h-[100vh] w-[100vw] flex items-center justify-center fixed z-50 bg-[#141516]'>
             {/* {dimension.width > 0 &&  */}

@@ -42,10 +42,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  useEffect(() => {
-    console.log("TRasnitions", isLoading, "seaaionItem", sessionItem)
-  }, [isLoading, sessionItem])
-
   return (
     <main>
       { (isLoading !== null || typeof isLoading !== 'undefined') &&
