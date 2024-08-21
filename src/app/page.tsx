@@ -28,6 +28,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import Navbar from '@/components/Navbar';
 import { useIntialAnimation } from '@/lib/store';
 import dynamic from 'next/dynamic';
+import { Projects } from '@/components/Projects';
 
 const LazyMobileFooter = dynamic(() =>
   import('@/components/Footer').then((mod) => mod.MobileFooter)
@@ -42,11 +43,8 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
   // const motion0 = motionValue(0)
 
-  const {
-    isinitialAnimation,
-    toggle,
-    toggleAnimateComplete,
-  } = useIntialAnimation();
+  const { isinitialAnimation, toggle, toggleAnimateComplete } =
+    useIntialAnimation();
 
   useEffect(() => {
     if (isLoading === null && isinitialAnimation === null) {
@@ -161,6 +159,8 @@ export default function Home() {
           </div>
           <div className='absolute pointer-events-none inset-1 opacity-50 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]'></div>
           <Aboutme progress={scrollYProgress} />
+
+          <Projects />
 
           <div
             className={cn(

@@ -70,10 +70,11 @@ export default function FramerBtn({
 
   const outerStyle = type === rounded ? '' : 'flatbtn-outer cursor-pointer';
   const innerStyle = type === rounded ? 'roundbtn' : 'btn-click flatbtn-inner';
-  const textStyle = type === rounded ? '' : 'btn-text lg:px-3';
+  const textStyle = type === rounded ? 'text-wrap' : 'btn-text lg:px-3';
   const secondBtnStyle = device == DESKTOP ? outerStyleParam : {};
 
   const willChange = useWillChange();
+  const isRounded = type === rounded
 
   return (
     <AnimatePresence>
@@ -93,17 +94,17 @@ export default function FramerBtn({
         className={cn('', outerStyle)}
         transition={{
           type: 'spring',
-          bounce: 1,
-          stiffness: 50,
-          damping: 7,
-          mass: 0.5,
+          bounce: 10,
+          stiffness: 25,
+          damping: 15,
+          mass: 0.2,
         }}
         onClick={() => onClick && onClick()}
       >
         <Link
           href={'https://www.linkedin.com/in/joshua-joseph777/'}
           target='_blank'
-          className={cn('z-[100]', type === rounded ? 'cursor-pointer' : 'pointer-events-none')}
+          className={cn('z-[100]', isRounded ? 'cursor-pointer' : 'pointer-events-none')}
         >
           <motion.div
             layout
@@ -117,9 +118,9 @@ export default function FramerBtn({
             <motion.span
               key={`${keystr}-span`}
               style={{ x: textX, y: textY }}
-              className={cn('z-10 relative text-white', textStyle)}
+              className={cn('z-10 relative text-white', textStyle, isRounded && 'flex flex-col text-center')}
             >
-              {label}
+              {isRounded ? label.split('-').map((item, idx) => <span key={idx}>{item}</span>) : label}
             </motion.span>
             {/* src='https://web.archive.org/web/20160312084140im_/http://splatoon.nintendo.com/assets/img/nav-bg-fill-blue.png?1443460871' */}
             <AnimatePresence>
@@ -132,9 +133,6 @@ export default function FramerBtn({
                   height: 0,
                   opacity: 0,
                 }}
-                // animateHeight== 'close' ? [0, 1, 1, 0] :
-                // height: animateHeight == 'open' ? [0, 20, 200, 200] : animateHeight == 'close' ? [200, 0, 200, 200] : 0,
-                // opacity: animateHeight == 'open' ? [1, 1, 1, 1] : animateHeight == 'close' ? [0, 1, 1, 0] : 1,
 
                 animate={{
                   height:

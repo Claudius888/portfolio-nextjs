@@ -38,11 +38,11 @@ export default function Preloader() {
 
     return (
         <motion.div variants={slideUp} initial="initial" exit="exit" className='h-[100vh] w-[100vw] flex items-center justify-center fixed z-50 bg-[#141516]'>
-            {dimension.width > 0 && 
-            <div className='min-h-[3rem] min-w-[15rem]'>
+            {/* {dimension.width > 0 &&  */}
+            <div className='min-h-[3rem] min-w-[17rem]'>
                 <motion.p variants={opacity} initial="initial" animate="enter"
                 style={{willChange}}
-                className='flex text-white text-5xl items-center z-1'
+                className='flex text-white text-5xl items-center z-1 min-h-[3rem] min-w-[17rem]'
                 >
                     {/* <span className='block w-3 h-3 bg-white rounded-[50%] mr-3'>
                     </span> */}
@@ -53,7 +53,7 @@ export default function Preloader() {
                     <motion.path variants={curve} initial="initial" exit="exit" className='fill-[#141516]'></motion.path>
                 </svg>
             </div>
-            }
+            {/* } */}
         </motion.div>
     )
 }

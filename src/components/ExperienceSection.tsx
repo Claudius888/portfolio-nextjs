@@ -152,7 +152,7 @@ function PCExperienceCard({ experience }: { experience: experienceProp }) {
   const [isFocused, onHover] = useCycle(false, true);
   return (
     <BackgroundGradient
-      className='rounded-[22px] font-satoshi flex sm:p-1 bg-white dark:bg-zinc-900 h-[70vh] relative items-center group/canvas-card'
+      className='rounded-[22px] font-satoshi flex sm:p-1 bg-white dark:bg-zinc-900 h-[80vh] xl:h-[70vh] relative items-center group/canvas-card'
       onHover={onHover}
     >
       <div
@@ -160,7 +160,7 @@ function PCExperienceCard({ experience }: { experience: experienceProp }) {
          absolute inset-0
         '
       >
-        <h1 className='text-2xl text-white-gradient font-bold'>
+        <h1 className='text-sm lg:text-xl text-white-gradient font-bold'>
           {experience.company}
         </h1>
       </div>
@@ -233,7 +233,7 @@ function ExperienceCards() {
   
 
   return (
-    <div className='md:max-w-[70vw] relative'>
+    <div className='relative'>
       {isMobileScreen ? (
         <div className='flex flex-col gap-3 items-center h-[28rem] min-w-[90vw] my-4 overflow-clip'>
           {experienceArr.map((experience, i) => {
@@ -250,7 +250,7 @@ function ExperienceCards() {
           })}
         </div>
       ) : (
-        <div className='gap-2 flex flex-row'>
+        <div className='gap-2 flex flex-row lg:min-w-90vw justify-evenly'>
           {experienceArr.map((experience, i) => {
             return <PCExperienceCard key={i} experience={experience} />;
           })}

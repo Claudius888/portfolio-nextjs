@@ -184,7 +184,7 @@ export default function Footer() {
                   keystr={'linkedin-24'}
                   coordx={x}
                   background='#455CE9'
-                  label='Get in touch'
+                  label='Get in touch-Linkedin'
                   type='rounded'
                 />
               </div>
