@@ -6,7 +6,6 @@ import HeadlessEcommerce from '../../public/headless-ecommerce.jpg';
 import SMBEcommerce from '../../public/smb-ecommerce.jpg';
 import B2BEcommerce from '../../public/b2b-ecommerce.jpg';
 import Altaroad from '../../public/altaroad.jpg';
-import { DESKTOP, useDeviceDetection } from '@/lib/hooks';
 
 export function Projects() {
   return (
@@ -41,11 +40,9 @@ export function Projects() {
 const HeaderImage = ({
   src,
   alt,
-  fill,
 }: {
   src: StaticImageData;
   alt: string;
-  fill: boolean;
 }) => {
   return (
     <Image
@@ -57,7 +54,6 @@ const HeaderImage = ({
     />
   );
 };
-// sizes=''
 
 const items = [
   {
@@ -65,7 +61,7 @@ const items = [
     description:
       'Worked on the frontend of the webapp along with setting Contentful CMS for better maintainablity',
     header: (
-      <HeaderImage src={HeadlessEcommerce} alt={'Headless Ecommerce'} fill />
+      <HeaderImage src={HeadlessEcommerce} alt={'Headless Ecommerce'}/>
     ),
     link: new URL('https://www.webnexs.com/headless-ecommerce.php'),
   },
@@ -74,7 +70,7 @@ const items = [
     description:
       'Developed UI for Warehouse management, Order management flows, Product search and filtering flow',
     header: (
-      <HeaderImage src={B2BEcommerce} alt={'Headless Ecommerce'} fill={false} />
+      <HeaderImage src={B2BEcommerce} alt={'Custom B2B Admin Dashboard'} />
     ),
     link: new URL('https://www.webnexs.com/b2b-ecommerce-development.php'),
   },
@@ -83,7 +79,7 @@ const items = [
     description:
       'Worked on data management with ElasticSearch, AWS, deployment in Remote Python Servers for onsite sensors, Docker',
     header: (
-      <HeaderImage src={Altaroad} alt={'Headless Ecommerce'} fill={false} />
+      <HeaderImage src={Altaroad} alt={'Altaroad company'}/>
     ),
     link: new URL('https://www.altaroad.com/en/'),
   },
@@ -91,7 +87,7 @@ const items = [
     title: 'ECommerce MVP',
     description:
       'Working on enhancing existing Ecommerce infrastructure with MVP made with Nextjs, React and TypeScript',
-    header: <HeaderImage src={SMBEcommerce} alt={'Headless Ecommerce'} fill />,
+    header: <HeaderImage src={SMBEcommerce} alt={'ECommerce MVP'} />,
     link: new URL(
       'https://www.webnexs.com/smb-ecommerce-website-development.php'
     ),

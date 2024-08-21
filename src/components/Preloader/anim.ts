@@ -22,14 +22,14 @@ export const slideUp = {
 
 export const slidefromDown = {
     initial: {
-        bottom: "-75vh"
+        y: "75vh"
     },
     animate: {
-        bottom: 0,
-        transition: {duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2}
+        y: 0,
+        transition: {duration: 0.8, ease: [0.76, 0, 0.24, 1]}
     },
     exit: {
-        bottom: "100vh",
+        y: "-100vh",
         transition: {duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2}
     }
 }

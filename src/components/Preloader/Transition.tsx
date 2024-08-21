@@ -26,11 +26,11 @@ export default function Transition({ pathname }: { pathname: string }) {
     dimension.height
   } L${dimension.width} 0 Q${dimension.width / 2} 100 0 0 L 0 ${dimension.height}`;
 
-  const fillpath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
-    dimension.height
-  } Q${dimension.width / 2} ${dimension.height + 300} 0 ${
-    dimension.height
-  }  L0 0`;
+  // const fillpath = `M0 0 L${dimension.width} 0 L${dimension.width} ${
+  //   dimension.height
+  // } Q${dimension.width / 2} ${dimension.height + 300} 0 ${
+  //   dimension.height
+  // }  L0 0`;
 
   const curve = {
     initial: {
@@ -75,7 +75,7 @@ export default function Transition({ pathname }: { pathname: string }) {
           </svg> */}
 
           <motion.svg
-            className='absolute w-full h-[100%]'
+            className='absolute w-full h-[100%] bottom-0'
             animate='animate'
             exit='exit'
             initial='initial'

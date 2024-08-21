@@ -23,7 +23,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
           setIsLoading(false);
           document.body.style.cursor = 'default';
           window.scrollTo(0, 0);
-        }, 900);
+        }, 1050);
       })();
     }
   }, []);
