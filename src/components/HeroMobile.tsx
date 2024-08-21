@@ -24,7 +24,7 @@ function HeroMobile() {
                 Frontend Developer
               </h1>
             </span>
-            <h2 className='text-[#DFE5EC] text-lg text-center mx-auto max-w-xl font-normal'>
+            <h2 className='text-[#DFE5EC] text-lg text-center mx-auto max-w-xl font-sans'>
               Hi 👋. My name is{' '}
               <span className='text-sky-300 text-2xl font-bold'>Joshua</span>,
               and I am a Javascript developer living in UK & working remotely
