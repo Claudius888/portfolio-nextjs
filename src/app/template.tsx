@@ -1,8 +1,5 @@
 'use client';
 
-import Transition from '@/components/Preloader/Transition';
-import { useCheckStorageonPageLoad } from '@/lib/hooks';
-import { localStorageKey } from '@/lib/types';
 import { AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -16,7 +13,6 @@ const LazyTransition = dynamic(() =>
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState<boolean | null | undefined>(null);
-  // const { getItem } = useCheckStorageonPageLoad();
   const { isinitialAnimation } = useIntialAnimation()
   const [sessionItem, setSessionItem] = useState<boolean | null | undefined>(null);
 
@@ -33,7 +29,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    // const localstorageitem = getItem(localStorageKey)
     if (isLoading === null && isinitialAnimation === null) {
         setIsLoading(isinitialAnimation);
     } else if(!isinitialAnimation) {

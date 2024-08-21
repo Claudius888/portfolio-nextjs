@@ -19,10 +19,9 @@ import {
   motion,
   AnimatePresence,
   useWillChange,
-  motionValue,
 } from 'framer-motion';
 import Lenis from 'lenis';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import { useIntialAnimation } from '@/lib/store';
 import dynamic from 'next/dynamic';
@@ -36,7 +35,6 @@ const LazyDesktopFooter = dynamic(() => import('@/components/Footer'));
 
 export default function Home() {
   const container = useRef(null);
-  // const { getItem, setItem } = useCheckStorageonPageLoad();
 
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
   // const motion0 = motionValue(0)
@@ -51,10 +49,6 @@ export default function Home() {
       setIsLoading(false);
     }
   }, []);
-
-  useEffect(() => {
-    console.log('Init anim', isinitialAnimation);
-  }, [isinitialAnimation]);
 
   const { scrollYProgress } = useScroll({
     target: container,

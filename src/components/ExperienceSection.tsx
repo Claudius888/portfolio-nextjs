@@ -199,7 +199,7 @@ function PCExperienceCard({ experience }: { experience: experienceProp }) {
                   className='bg-clip-text text-transparent bg-white-gradient 
                   text-xl flex flex-row items-center gap-2 font-bold'
                 >
-                  <Icons.Point className='fill-white' />
+                  <Icons.Point />
                   {item}
                 </span>
               );
