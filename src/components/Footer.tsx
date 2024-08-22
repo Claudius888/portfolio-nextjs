@@ -4,10 +4,7 @@ import { cn } from '../lib/utils';
 import FramerBtn from './FramerBtn';
 import ProfilePic from '../../public/gradient_bg_face.jpg';
 import {
-  DESKTOP,
-  MOBILE,
   SMALL_MOBILE,
-  TABLET,
   useDeviceDetection,
 } from '../lib/hooks';
 import Image from 'next/image';
@@ -25,6 +22,10 @@ async function copyText(text:string) {
     toast.error("An Error Occured")
   }
 }
+
+const CONTACT_EMAIL = 'josh2develop@gmail.com'
+// change values in copyText
+const CONTACT_NUMBER = '+44 2080586753'
 
 
 export const MobileFooter = () => {
@@ -85,18 +86,18 @@ export const MobileFooter = () => {
             <div className='flex flex-col gap-5 items-center pointer-events-none z-20'>
               <Button variant={'outline'}
               className='w-[80vw] h-[3rem] bg-transparent text-white rounded-3xl border-2 cursor-pointer'
-              onClick={() => copyText('joshmarion777@gmail.com')}
+              onClick={() => copyText(CONTACT_EMAIL)}
               >
-                joshmarion777@gmail.com
+                {CONTACT_EMAIL}
 
               </Button>
               {/* <button className='w-[80vw] h-[3rem] bg-transparent text-white rounded-3xl border-2 cursor-pointer'
               >
               </button> */}
               <button className='w-[80vw] h-[3rem] bg-transparent text-white rounded-3xl border-2 cursor-pointer'
-              onClick={() => copyText('+33780800970')}
+              onClick={() => copyText('+442080586753')}
               >
-                +33 780 800 970
+                {CONTACT_NUMBER}
               </button>
             </div>
           </div>
@@ -182,19 +183,19 @@ export default function Footer() {
                 key={'email-32'}
                 keystr={'email-32'}
                 background='transparent'
-                label='joshmarion777@gmail.com'
+                label={CONTACT_EMAIL}
                 type='flatRounded'
                 outerStyleParam={{}}
-                onClick={() => copyText('joshmarion777@gmail.com')}
+                onClick={() => copyText(CONTACT_EMAIL)}
               />
 
               <FramerBtn
                 key={'phone-12'}
                 keystr={'phone-12'}
                 background='transparent'
-                label='+33 7 80 80 09 70'
+                label={CONTACT_NUMBER}
                 type='flatRounded'
-                onClick={() => copyText('+33780800970')}
+                onClick={() => copyText('+44 2080586753')}
                 outerStyleParam={{ marginLeft: '1rem' }}
               />
             </div>
