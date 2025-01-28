@@ -189,7 +189,7 @@ export default function Footer() {
                 onClick={() => copyText(CONTACT_EMAIL)}
               />
 
-              <FramerBtn
+              {/* <FramerBtn
                 key={'phone-12'}
                 keystr={'phone-12'}
                 background='transparent'
@@ -197,7 +197,7 @@ export default function Footer() {
                 type='flatRounded'
                 onClick={() => copyText('+44 2080586753')}
                 outerStyleParam={{ marginLeft: '1rem' }}
-              />
+              /> */}
             </div>
           </div>
         </div>

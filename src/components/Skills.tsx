@@ -11,8 +11,8 @@ const skills = [
   ['Creating with', 'Nextjs'],
   ['Killing', 'Typescript'],
   ['Loving', 'React Native'],
-  ['Using', 'Three.js'],
-  ['Adore', 'Framer motion'],
+  ['Using', 'Zustand'],
+  ['Adore', 'Reanimated'],
   ['button', 'Check out my GitHub'],
 ];
 
