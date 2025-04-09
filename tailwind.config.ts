@@ -6,7 +6,7 @@ import colors from 'tailwindcss/colors';
 // import { default as flattenColorPalette } from 'tailwindcss/lib/util/flattenColorPalette';
 const {
   default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
+} = require('tailwindcss/lib/util/flattenColorPalette');
 const config = {
   darkMode: ['class'],
   content: [
@@ -78,7 +78,7 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
-        "appear": {
+        appear: {
           from: {
             opacity: '0',
             transform: 'translateY(4rem)',
@@ -92,7 +92,7 @@ const config = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        "appear": "appear 750ms ease-in-out",
+        appear: 'appear 750ms ease-in-out',
       },
       backgroundImage: {
         'gradient-1': 'linear-gradient(180deg, #184bff, #174aff)',
@@ -115,6 +115,7 @@ const config = {
   },
   plugins: [
     require('tailwindcss-animate'),
+    require('@tailwindcss/typography'),
     function ({ matchUtilities, theme }: any) {
       matchUtilities(
         {

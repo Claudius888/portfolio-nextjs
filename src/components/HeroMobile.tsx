@@ -19,16 +19,18 @@ function HeroMobile() {
                 className=''
               />
               <h1
-                className={'animated-js text-center text-6xl md:text-7xl font-bold mt-1 bg-text-gradient-1 bg-clip-text text-transparent text-wrap'}
+                className={
+                  'animated-js text-center text-6xl md:text-7xl font-bold mt-1 bg-te  xt-gradient-1 bg-clip-text text-transparent text-wrap'
+                }
               >
-                Frontend Developer
+                React Native Dev
               </h1>
             </span>
             <h2 className='text-[#DFE5EC] text-lg text-center mx-auto max-w-xl font-sans'>
               Hi 👋. My name is{' '}
-              <span className='text-white text-2xl font-bold'>Joshua</span>,
-              and I am a React/React Native developer living in France & working remotely
-              with the whole world.
+              <span className='text-white text-2xl font-bold'>Joshua</span>, and
+              I am a React/React Native developer living in London & working
+              remotely with the whole world.
             </h2>
             <div className='text-center flex justify-center'>
               <div className='max-w-max relative z-20 group'>

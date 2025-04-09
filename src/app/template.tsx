@@ -5,16 +5,21 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useIntialAnimation } from '@/lib/store';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-const LazyTransition = dynamic(() =>
-  import('@/components/Preloader/Transition')
+const queryClient = new QueryClient();
+
+const LazyTransition = dynamic(
+  () => import('@/components/Preloader/Transition')
 );
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [isLoading, setIsLoading] = useState<boolean | null | undefined>(null);
-  const { isinitialAnimation } = useIntialAnimation()
-  const [sessionItem, setSessionItem] = useState<boolean | null | undefined>(null);
+  const { isinitialAnimation } = useIntialAnimation();
+  const [sessionItem, setSessionItem] = useState<boolean | null | undefined>(
+    null
+  );
 
   useEffect(() => {
     if (isLoading !== null || typeof isLoading !== 'undefined') {
@@ -30,23 +35,25 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (isLoading === null && isinitialAnimation === null) {
-        setIsLoading(isinitialAnimation);
-    } else if(!isinitialAnimation) {
-        setIsLoading(true)
-        setSessionItem(isinitialAnimation)
+      setIsLoading(isinitialAnimation);
+    } else if (!isinitialAnimation) {
+      setIsLoading(true);
+      setSessionItem(isinitialAnimation);
     }
   }, []);
 
   return (
-    <main>
-      { (isLoading !== null || typeof isLoading !== 'undefined') &&
-        <AnimatePresence mode='wait'>
-          {isLoading && <LazyTransition pathname={pathname} />}
-        </AnimatePresence>
-      }
-      {(!isLoading || sessionItem === null || sessionItem === undefined) && (
-        <div className=''>{children}</div>
-      )}
-    </main>
+    <QueryClientProvider client={queryClient}>
+      <main>
+        {(isLoading !== null || typeof isLoading !== 'undefined') && (
+          <AnimatePresence mode='wait'>
+            {isLoading && <LazyTransition pathname={pathname} />}
+          </AnimatePresence>
+        )}
+        {(!isLoading || sessionItem === null || sessionItem === undefined) && (
+          <div className=''>{children}</div>
+        )}
+      </main>
+    </QueryClientProvider>
   );
 }
