@@ -13,7 +13,7 @@ export function VideoView({
   classDef?: classnameProp;
   styles?: StyleHTMLAttributes<HTMLDivElement>;
 }) {
-  const posterUrl = process.env.NEXT_PUBLIC_CLOUDFRONT_URI + '/blue_screen.png';
+  // const posterUrl = process.env.NEXT_PUBLIC_CLOUDFRONT_URI + '/blue_screen.png';
 
   const vidUrl = useMemo(() => {
     const baseUrl = process.env.NEXT_PUBLIC_CLOUDFRONT_URI;
@@ -102,7 +102,7 @@ export function VideoView({
             w-full h-full object-fill
             rounded-[20px] bg-black relative aspect-[9/19]'
           src={vidUrl}
-          poster={posterUrl}
+          // poster={posterUrl}
           // autoPlay
           muted
           playsInline

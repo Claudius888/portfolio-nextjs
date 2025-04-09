@@ -64,7 +64,7 @@ function Modal({
     queryFn: () => fetchGistContent(gistId),
     // Options: only run the query if gistId has a value
     enabled: !!gistId,
-    staleTime: 10 * 1000,
+    staleTime: 10 * 60 * 1000,
     retry: 1,
   });
 

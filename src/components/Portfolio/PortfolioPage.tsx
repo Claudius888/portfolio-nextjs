@@ -119,20 +119,6 @@ const ALL_ANIMATIONS: AnimationsObj[] = [
     isSmall: false,
     gistId: '596e9e6c82dd9ec6b6a1d7a3bcd2cae5',
   },
-  // {
-  //   id: '11',
-  //   title: 'Card Flip Animation',
-  //   videoUrl: '/neumorphism.mp4', // Add more videos as needed
-  //   tags: ['card', 'flip', '3d', 'transform'],
-  //   isSmall: false,
-  // },
-  // {
-  //   id: '12',
-  //   title: 'Loading Spinner Bounce',
-  //   videoUrl: '/neumorphism.mp4',
-  //   tags: ['loading', 'spinner', 'indicator', 'bounce'],
-  //   isSmall: false,
-  // },
 ];
 
 // --- Pagination Constants ---
@@ -141,7 +127,6 @@ const LOAD_MORE_COUNT = 4; // Number of items to load each time button is clicke
 // -----
 
 export default function PortfolioPage() {
-  const [searchQuery, setSearchQuery] = useState('');
   // Update state to hold animation data AND initial rectangle
   const [selectedAnimation, setSelectedAnimation] = useState<{
     data: AnimationsObj;
@@ -149,10 +134,6 @@ export default function PortfolioPage() {
   } | null>(null); // Shape: { data: animation, initialRect: DOMRect } | null
 
   const [visibleCount, setVisibleCount] = useState(INITIAL_LOAD_COUNT);
-
-  useEffect(() => {
-    setVisibleCount(INITIAL_LOAD_COUNT); // Reset to initial load count on new search
-  }, [searchQuery]);
 
   // Use useCallback to memoize the click handler
   const handleCardClick = useCallback(
@@ -183,16 +164,6 @@ export default function PortfolioPage() {
     }
     setSelectedAnimation(null); // Close the modal
   }, [selectedAnimation]); // Depend on selectedAnimation to get the ID
-
-  const filteredAnimations = ALL_ANIMATIONS.filter((animation) => {
-    const query = searchQuery.toLowerCase().trim();
-    if (!query) return true;
-    const titleMatch = animation.title.toLowerCase().includes(query);
-    const tagMatch =
-      animation.tags &&
-      animation.tags.some((tag) => tag.toLowerCase().includes(query));
-    return titleMatch || tagMatch;
-  });
 
   // --- Sliced Animations to Show ---
   const animationsToShow = useMemo(
@@ -234,7 +205,7 @@ export default function PortfolioPage() {
           onAnimationClick={handleCardClick}
         />
       </main>
-      {visibleCount < filteredAnimations.length && (
+      {visibleCount < animationsToShow.length && (
         <div
           className='
         fixed bottom-0 left-1/2
@@ -246,7 +217,7 @@ export default function PortfolioPage() {
             onClick={handleLoadMore}
             className='px-6 py-3 bg-blue-600 text-white text-sm font-semibold rounded-full shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-150 ease-in-out'
           >
-            View More ({filteredAnimations.length - visibleCount} remaining)
+            View More ({animationsToShow.length - visibleCount} remaining)
           </button>
         </div>
       )}
