@@ -18,7 +18,7 @@ export type AnimationsObj = {
   description?: string;
   codeSnippetUrl?: string;
   isSmall?: Boolean;
-  gistId?: string;
+  gistId: string;
 };
 
 export type cardClick = (

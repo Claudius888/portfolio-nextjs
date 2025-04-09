@@ -4,8 +4,9 @@ import { Transition } from '@headlessui/react';
 import { VideoView } from '../AnimationGallery/VideoView';
 import ContentSection from './ContentSection';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { AnimationsObj } from '@/lib/types';
 
-const fetchGistContent = async (gistId: string) => {
+const fetchGistContent = async (gistId: string | undefined) => {
   if (!gistId) {
     // Don't attempt to fetch if gistId is missing
     // useQuery's 'enabled' option handles this, but belt-and-suspenders check
@@ -35,12 +36,21 @@ const fetchGistContent = async (gistId: string) => {
   }
 };
 
-function Modal({ selectedAnimationState, onClose }) {
+function Modal({
+  selectedAnimationState,
+  onClose,
+}: {
+  selectedAnimationState: {
+    data: AnimationsObj;
+    initialRect: DOMRect | null;
+  } | null;
+  onClose: () => void;
+}) {
   const { data: animation, initialRect } = selectedAnimationState || {}; // Destructure state
   const [showContent, setShowContent] = useState(false); // State to fade in content slightly delayed
 
   // const queryClient = useQueryClient();
-  const gistId = animation?.gistId; // Get the gistId
+  const gistId = animation && animation.gistId; // Get the gistId
 
   const {
     data: gistContent,
@@ -105,7 +115,8 @@ function Modal({ selectedAnimationState, onClose }) {
   // Scroll lock / Escape key handler (remains the same)
   useEffect(() => {
     if (!animation) return;
-    const handleEsc = (event) => event.key === 'Escape' && onClose();
+    const handleEsc = (event: KeyboardEvent) =>
+      event.key === 'Escape' && onClose();
     window.addEventListener('keydown', handleEsc);
     document.body.style.overflow = 'hidden';
     return () => {
@@ -126,7 +137,7 @@ function Modal({ selectedAnimationState, onClose }) {
     return undefined;
   }, [animation]);
 
-  const handleContentClick = (e) => e.stopPropagation();
+  const handleContentClick = (e: React.MouseEvent) => e.stopPropagation();
 
   return (
     <Transition show={!!animation} as={Fragment}>
