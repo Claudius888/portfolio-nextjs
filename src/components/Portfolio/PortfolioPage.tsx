@@ -205,7 +205,7 @@ export default function PortfolioPage() {
           onAnimationClick={handleCardClick}
         />
       </main>
-      {visibleCount < animationsToShow.length && (
+      {visibleCount < ALL_ANIMATIONS.length && (
         <div
           className='
         fixed bottom-0 left-1/2
@@ -217,7 +217,7 @@ export default function PortfolioPage() {
             onClick={handleLoadMore}
             className='px-6 py-3 bg-blue-600 text-white text-sm font-semibold rounded-full shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-150 ease-in-out'
           >
-            View More ({animationsToShow.length - visibleCount} remaining)
+            View More ({ALL_ANIMATIONS.length - visibleCount} remaining)
           </button>
         </div>
       )}
