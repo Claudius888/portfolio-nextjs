@@ -29,8 +29,8 @@ function HeroMobile() {
             <h2 className='text-[#DFE5EC] text-lg text-center mx-auto max-w-xl font-sans'>
               Hi 👋. My name is{' '}
               <span className='text-white text-2xl font-bold'>Joshua</span>, and
-              I am a React/React Native developer living in London & working
-              remotely with the whole world.
+              I am a React/React Native developer & working remotely with the
+              whole world.
             </h2>
             <div className='text-center flex justify-center'>
               <div className='max-w-max relative z-20 group'>
